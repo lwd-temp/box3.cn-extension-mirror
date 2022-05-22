@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>开发工具箱 - 经纬度坐标计算距离</title>
+<meta name="keywords" content="经纬度坐标计算距离，LBS" />
+<meta name="description" content="经纬度坐标计算距离，最近的搜索历史" />
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link href="/css/popup.css" rel="stylesheet" />
+<link rel="icon" href="/icons/favicon.ico" mce_href="/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container" style="width:1260px;">
+      <a class="brand active" href="/index.html" target="_self" style="width:382px;;text-align:left;" id="nav-href"><img src="/icons/icon32.png" class="custom-header-img">开发工具箱</a>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="text-align:center;width:750px;margin-top:60px; margin-bottom:60px;" id="content">
+	<h2 id="headings">经纬度坐标计算距离</h2>
+	<form>
+	<table class="table table-bordered">
+	  <thead>
+	  	<tr>
+		  <th colspan="2" style="text-align:center;background-color:#EEEEEE;">位置一</th>
+		  <th colspan="2" style="text-align:center;background-color:#EEEEEE;">位置二</th>
+		</tr>
+		<tr>
+		  <td>经度</td>
+		  <td>纬度</td>
+		  <td>经度</td>
+		  <td>纬度</td>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td><input class="input-medium" type="text" name="lng_start" id="lng_start" tabindex="1"></td>
+		  <td><input class="input-medium" type="text" name="lat_start" tabindex="2"></td>
+		  <td><input class="input-medium" type="text" name="lng_end" tabindex="3"></td>
+		  <td><input class="input-medium" type="text" name="lat_end" tabindex="4"></td>
+		</tr>
+		<tr>
+		  <td colspan="4" style="text-align:center;"><button type="button" class="btn btn-large btn-primary" id="do" tabindex="5">计算距离</button></td>
+		</tr>
+	  </tbody>
+	</table>
+	</form>
+	
+	<h2 id="headings">最近的搜索历史</h2>
+	<table class="table table-hover">
+	  <thead>
+	  	<tr>
+		  <th style="background-color:#EEEEEE;">起始 - 经度 / 纬度</th>
+		  <th style="background-color:#EEEEEE;">结束 - 经度 / 纬度</th>
+		  <th style="background-color:#EEEEEE;">计算距离（米）</th>
+		</tr>
+	  </thead>
+	  <tbody id="data">
+		<tr>
+		  <td>11.1111 / 12.1112</td>
+		  <td>13.1113 / 14.1114</td>
+		  <td>310853</td>
+		</tr>
+	  </tbody>
+	</table>
+</div>
+
+<!--lbs start-->
+<div id="myModal-lbs" class="modal hide fade" tabindex="-1" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+      <fieldset>
+        <legend>提示信息</legend>
+		<p class="text-success" id="lbs_txt" style="font-weight: bold;">努力加载中，请稍后...</p>
+      </fieldset>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">关闭</button>
+  </div>
+</div>
+<!--lbs end-->
+
+<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/developtoolbox/scrolltopcontrol.js"></script>
+<script src="/js/developtoolbox/jquery.cookie.js"></script>
+<script src="/js/developtoolbox/library.js"></script>
+<script src="/js/page/page-lbs.js"></script>
+</body>
+</html>

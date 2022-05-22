@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<meta name="viewport" content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+<title>开发工具箱 - UserAgent</title>
+<meta name="keywords" content="UserAgent、屏幕宽、屏幕高、分辨率" />
+<meta name="description" content="在线获取UA、屏幕宽度、屏幕高度、屏幕分辨率等信息" />
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link href="/css/popup.css" rel="stylesheet" />
+<link rel="icon" href="/icons/favicon.ico" mce_href="/icons/favicon.ico" type="image/x-icon">
+<style>
+.dl-horizontal dt{width: 110px;}
+.dl-horizontal dd{margin-left: 137px;}
+</style>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" style="width:100%">
+  <div class="navbar-inner" style="width:100%">
+    <div class="container" style="width:100%">
+      <a class="brand active" href="/index.html" target="_self" style="width:130px;margin-left:3px;" id="nav-href"><img src="/icons/icon32.png" class="custom-header-img">UserAgent</a>
+    </div>
+  </div>
+</div>
+
+<div style="width:100%; margin-top:60px; margin-bottom:80px;">
+
+<div style="margin:20px;height:200px">
+<h4>识别浏览器UA、屏幕宽高、分辨率</h4>
+<img src="/img/ua/qrcode_ua_default.png" id="ua_devtype" alt="UA qrcode">
+</div>
+
+<div style="clear:both;margin-left:20px;margin-right:20px">
+<table class="table table-hover table-bordered table-striped">
+<thead>
+  <tr>
+	<th>屏幕宽</th>
+  	<th>屏幕高</th>
+	<th>分辨率</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+  	<td id="pm_width">Loading ...</td>
+	<td id="pm_height">Loading ...</td>
+	<td id="pm_ro">Loading ...</td>
+  </tr>
+</tbody>
+</table>
+
+<h4>User Agent</h4>
+<textarea rows="3" id="useragent" style="width:97%;"></textarea>
+</div>
+</div>
+
+<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/developtoolbox/library.js"></script>
+<script>
+$(function(){
+	var ua = navigator.userAgent ? navigator.userAgent : '未知浏览器';
+	
+	$("#useragent").text(ua);		 
+	
+	$('#pm_width').text(document.body.scrollWidth);
+	$('#pm_height').text(document.body.scrollHeight);
+	$('#pm_ro').text(window.screen.width + ' x ' + window.screen.height);
+	
+	var height = $('#useragent').get(0).scrollHeight;
+	$('#useragent').css('height', height + 'px');
+	
+	var getDevtypeByUa = function(ua)
+	{
+		var path = '/img/ua/';
+		var filename = '';
+		if(ua.match(/android/i))
+		{
+			filename = 'qrcode_ua_android.png';
+		} else if(ua.match(/iphone/i))
+		{
+			filename = 'qrcode_ua_iphone.png';
+		} else
+		{
+			filename = 'qrcode_ua_default.png';
+		}
+		
+		return path + filename;
+	}
+
+	$("#ua_devtype").attr('src', getDevtypeByUa(ua)); 
+	
+	func.copyright();
+})
+</script>
+
+</body>
+</html>

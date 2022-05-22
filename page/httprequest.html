@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>开发工具箱 - HTTP Request</title>
+<meta name="keywords" content="http请求模拟器，在线模拟发送http请求" />
+<meta name="description" content="在线模拟http发送请求，包括 GET、POST，更直观查看Response Headers、Response" />
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link href="/css/buttons/main.css" rel="stylesheet" />
+<link href="/css/buttons/buttons.css" rel="stylesheet" />
+<link href="/css/popup.css" rel="stylesheet" />
+<link href="/css/icheck/flat/_all.css" rel="stylesheet" />
+<link rel="icon" href="/icons/favicon.ico" mce_href="/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container" style="margin-left:20px;">
+      <a class="brand active" href="/index.html" target="_self" style="width:130px;text-align:left;width:170px;" id="nav-href"><img src="../icons/icon32.png" class="custom-header-img">HTTP Request</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="menu" name="menu_one">
+            <a href="#"><i class="icon-time"></i> 亲，页面还剩余（<span id="timeout">180分</span>）自动关闭！</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:52px;margin-left:20px; margin-right:20px; " id="content">
+<form class="form-inline" onSubmit="return false;">
+<div>
+<fieldset>
+    <legend style="color: #7a7a7a;">URL地址 <span style="font-size:14px;">（这是一个测试版本，功能还不全。紧张开发中...）</span></legend>
+</fieldset>
+    <div style="float:none;width:auto; height:auto; margin-right:272px;">
+    	<input class="input-xxlarge" type="text" placeholder="http://www.box3.cn" style="height:34px; width:100%; font-weight: 200; font-size: 20px; line-height: 34px; color:#000" id="url_text" tabindex="1">
+    </div>
+    <div style="width:252px;float: right; margin-top:-45px;">
+     <select style="height:44px;width:80px;" id="select_method" tabindex="2">
+      <option>GET</option>
+      <option>POST</option>
+    </select>
+    <button type="button" class="btn btn-success btn-large disabled" id="send" tabindex="3">Send</button>
+    </div>
+</div>
+
+<div style="margin-top: 20px;">
+    <div style="width: 400px;float: left;display: inline;white-space: nowrap;color: #000;">
+    <fieldset>
+    	<legend style="color: #7a7a7a;">Request Headers</legend>
+	</fieldset>
+    	开发中。
+    </div>
+    <div style="margin-left: 400px; float: none; width:auto; height:auto;">
+        <fieldset>
+            <legend style="color: #7a7a7a;">Post Body</legend>
+        </fieldset>
+    	<div style="margin-right:10px;" id="post_body">
+        	<span class="post_body_1" style="display:none;"><textarea style="width:100%;min-height: 150px;" id="textarea_body" placeholder="user=参数&nickname=测试" tabindex="4"></textarea></span>
+            <span class="post_body_2"><span style="color: #08c;">GET</span> 请求 <span style="color: #08c;">Post Body</span> 无效。</span>
+        </div>
+    </div>
+
+</div>
+
+<div style="margin-top: 20px;">
+    <div style="width: 390px;float: left;display: inline;white-space: nowrap;color: #000;">
+    <fieldset>
+		<legend style="color: #7a7a7a;">Response Headers</legend>
+	</fieldset>
+	<pre class="prettyprint linenums" id="text_header">没有收到请求信息</pre>
+    </div>
+    
+	<fieldset>
+        <legend style="color: #7a7a7a;padding-left:10px;">Response</legend>
+    </fieldset>
+    <div style="margin-left: 400px; float: none; width:auto; height:auto;">
+    	<div style="margin-right:10px;"><textarea style="width:100%;min-height:150px;height:211px" id="textarea_result" tabindex="5"></textarea></div>
+    </div>
+</div>
+</form>
+</div>
+
+<div style="clear:both;height:20px;"></div>
+
+<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/developtoolbox/jquery.cookie.js"></script>
+<script src="/js/js-beautify.js"></script>
+<script src="/js/beautify-html.js"></script>
+<script src="/js/developtoolbox/library.js"></script>
+<script src="/js/page/http-request.js"></script>
+
+</body>
+</html>

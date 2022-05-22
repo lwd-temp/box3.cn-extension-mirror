@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>开发工具箱 - 漂亮二维码</title>
+<meta name="keywords" content="二维码，qrcode，漂亮二维码，二维码在线制作" />
+<meta name="description" content="开发工具箱非常快速的生成清晰度高、易扫描、图片、文字、超链接等多样化的漂亮二维码。" />
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/popup.css" />
+<link type="text/css" rel="stylesheet" href="/css/qrcode/styles.css" />
+<link rel="icon" href="/icons/favicon.ico" mce_href="/icons/favicon.ico" type="image/x-icon">
+</head>
+<body class="qrcode_bg">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container" style="margin-left:10px;">
+      <a class="brand active" href="/index.html" target="_self" style="width:130px;" id="nav-href"><img src="../icons/icon32.png" class="custom-header-img">漂亮二维码</a>
+    </div>
+  </div>
+</div>
+<div id="qrcode_container"></div>
+<div class="qrcode_control left">
+    <label for="render">生成类型</label>
+    <select id="render">
+        <option value="canvas" selected="selected">Canvas</option>
+        <option value="image">Image</option>
+        <option value="div">DIV</option>
+    </select>
+    <hr>
+    <label for="size">画布大小: 210px</label>
+    <input id="size" type="range" value="210" min="100" max="1000" step="10">
+    <div class="input-prepend" style="width:110px; display:none;">
+      <span class="add-on">宽</span>
+      <input class="span2" id="size_width" type="text" placeholder="自定义宽" style="width:66px;">
+    </div>
+    <div class="input-append" style="width:110px; display:none;">
+      <input class="span2" id="size_height" type="text" placeholder="自定义高" style="width:66px;">
+      <span class="add-on">高</span>
+    </div>
+    <label for="fill">填充颜色</label>
+    <input id="fill" type="color" value="#333333">
+    <label for="background">背景颜色</label>
+    <input id="background" type="color" value="#ffffff">
+    <label for="text">文本内容</label>
+    <textarea id="text" rows="5">http://www.box3.cn</textarea>
+    <hr>
+    <label for="minversion">MIN VERSION: 6</label>
+    <input id="minversion" type="range" value="6" min="1" max="10" step="1">
+    <label for="eclevel">纠错等级</label>
+    <select id="eclevel">
+        <option value="L">L - Low (7%)</option>
+        <option value="M">M - Medium (15%)</option>
+        <option value="Q">Q - Quartile (25%)</option>
+        <option value="H" selected="selected">H - High (30%)</option>
+    </select>
+    <label for="quiet">空白边界: 1 modules</label>
+    <input id="quiet" type="range" value="1" min="0" max="4" step="1">
+    <label for="radius">圆角效应(非Opera): 50%</label>
+    <input id="radius" type="range" value="50" min="0" max="50" step="10">
+    <hr>
+	<a id="qrcode_download" download="qrcode.png">下载当前生成的二维码</a>
+	<div style="clear:both;margin-bottom:42px;"></div>
+</div>
+
+<div class="qrcode_control right">
+<div class="alert alert-error" style="margin-right: 20px;">
+  注：低版本浏览器不支持。
+</div>
+<hr>
+    <label for="mode">模式</label>
+    <select id="mode">
+        <option value="0">0 - Normal</option>
+        <option value="1">1 - Label-Strip</option>
+        <option value="2" selected="selected">2 - Label-Box</option>
+        <option value="3">3 - Image-Strip</option>
+        <option value="4">4 - Image-Box</option>
+    </select>
+    <hr>
+    <label for="msize">大小: 0%</label>
+    <input id="msize" type="range" value="0" min="0" max="40" step="1">
+    <label for="mposx">X 坐标: 0%</label>
+    <input id="mposx" type="range" value="0" min="0" max="100" step="1">
+    <label for="mposy">Y 坐标: 0%</label>
+    <input id="mposy" type="range" value="0" min="0" max="100" step="1">
+    <hr>
+    <label for="label">标签内容（请调整大小、X、Y坐标）</label>
+    <input id="label" type="text" value="">
+    <label for="font">字体</label>
+    <input id="font" type="text" value="Ubuntu">
+    <label for="fontcolor">字体颜色；图片无效</label>
+    <input id="fontcolor" type="color" value="#ff9818">
+    <hr>
+    <label for="image">插入图片（请调整大小、X、Y坐标）</label>
+    <input id="image" type="file">
+</div>
+
+<img id="qrcode_img_buffer" src="/icons/icon32.png" />
+
+<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/qrcode/jquery.qrcode-0.11.0.min.js"></script>
+<script src="/js/qrcode/ff-range.js"></script>
+<script src="/js/developtoolbox/library.js"></script>
+<script src="/js/page/jquery.qrcode-page.js"></script>
+
+</body>
+</html>

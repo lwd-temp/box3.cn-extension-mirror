@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>开发工具箱 - 识别二维码/二维码解码</title>
+<meta name="keywords" content="qrcode reader,二维码解码,识别二维码" />
+<meta name="description" content="最时尚最高效的本地二维码解码" />
+<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link href="/css/popup.css" rel="stylesheet" />
+<link rel="icon" href="/icons/favicon.ico" mce_href="/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container" style="width:1260px;">
+      <a class="brand active" href="/index.html" target="_self" style="width:130px;" id="nav-href"><img src="../icons/icon32.png" class="custom-header-img">识别二维码</a>
+    </div>
+  </div>
+</div>
+
+<div style="width:100%;margin-top:60px;margin-bottom:60px;clear:both;">
+<table class="table table-bordered table-striped" style="margin:0 auto;width:98%">
+	<colgroup>
+	  <col class="span1">
+	  <col class="span7">
+	</colgroup>
+	<thead>
+	  <tr>
+		<th style="width:305px" id="source">
+			<ul class="thumbnails" style="margin-left:0px;width:auto;">
+			<li class="span4" style="margin-left:0px;width:auto;">
+            <div class="thumbnail">
+				<div class="caption" style="text-align:center;">
+                    <p>
+						<button type="button" class="btn" id="upload" style="width:80%;height:50px" >点击按钮识别二维码</button>
+                        <input type="file" id="file" class="btn" style="width:80%;display:none" />
+                    </p>
+                </div>
+				<div id="text">
+				</div>
+            </div>
+        </li>
+		</ul>
+		</th>
+		<th style="text-align:center">
+			<textarea style="width:98%;height:98%"></textarea>
+		</th>
+	  </tr>
+	</thead>
+</table>
+</div>
+
+<script src="/bootstrap/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/js/developtoolbox/library.js"></script>
+<script type="text/javascript" src="/js/qrcode-view/sea.js"></script>
+
+<script>
+$(function() {
+	try{
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext("2d");
+		canvas.id = "canvas";
+		$('#text').html(canvas);
+	}catch(err){
+		$(".caption").html("抱歉，你的浏览器不支持图像识别！");
+		$('#file').remove();
+		return false;
+	}
+	
+	$('#upload').on('click', function(){
+		$('#file').trigger('click');
+	})
+
+	seajs.config({
+		base: '/js/qrcode-view/'
+	});
+	seajs.use('qread', function(qread){
+		var canvas = document.getElementById('canvas');
+		var file = document.getElementById('file');
+		var ctx = canvas.getContext('2d');
+
+		file.addEventListener('change', function(e){
+			$('#text').html(canvas);
+			$('textarea').html('二维码解析中，请稍后... ...');
+			var pic = e.target.files[0];
+			var URL = window.URL ? window.URL : (window.webkitURL ? window.webkitURL : '');
+			var src = URL.createObjectURL(pic);
+			var img = new Image();
+			img.onload = function(){
+				$('#source').width(this.width);
+				canvas.width = this.width;
+				canvas.height = this.height;
+				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+				qread(ctx.getImageData(0, 0, canvas.width, canvas.height), function(data){
+					$('textarea').html(data);
+				});
+			}
+			img.src = src;
+		})
+	});
+	
+	func.copyright();
+});
+</script>
+</body>
+</html>
